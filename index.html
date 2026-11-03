@@ -43,8 +43,96 @@ textarea:focus,select:focus{border-color:#a18aff}
 .progress-fill{height:100%;width:0;background:#9b89ff;transition:.3s}
 .note{font-size:12px;color:#969fb6;line-height:1.6}
 .saved-item{padding:13px;background:#1a253b;border-radius:10px;margin:9px 0;font-size:13px;line-height:1.6}
+
+/* CHAT ARRANCA 0.4 */
+.chat-box{
+background:#121a2b;
+border:1px solid #29364e;
+border-radius:20px;
+padding:20px;
+margin:20px 0;
+}
+.chat-intro{
+color:#a6aec3;
+font-size:13px;
+line-height:1.6;
+margin-top:-5px;
+}
+.chat-messages{
+height:300px;
+overflow-y:auto;
+background:#0c1322;
+border-radius:12px;
+padding:12px;
+margin:16px 0;
+}
+.chat-message{
+padding:11px 13px;
+border-radius:12px;
+margin:8px 0;
+max-width:90%;
+font-size:14px;
+line-height:1.6;
+white-space:pre-wrap;
+overflow-wrap:anywhere;
+}
+.bot-message{
+background:#202c43;
+margin-right:auto;
+}
+.user-message{
+background:#40366f;
+margin-left:auto;
+}
+.chat-form{
+display:flex;
+gap:8px;
+}
+.chat-form input{
+min-width:0;
+flex:1;
+background:#0c1322;
+color:white;
+border:1px solid #394660;
+border-radius:12px;
+padding:13px;
+font-size:14px;
+}
+.chat-form button{
+background:#8875f5;
+color:white;
+border:0;
+border-radius:12px;
+padding:0 17px;
+font-weight:bold;
+cursor:pointer;
+}
+.chat-hint{
+font-size:11px;
+color:#858da5;
+line-height:1.5;
+margin-top:12px;
+}
+.quick-prompts{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin:12px 0;
+}
+.quick-prompts button{
+background:#202c43;
+color:#c9c0ff;
+border:1px solid #394660;
+border-radius:20px;
+padding:9px 12px;
+font-size:12px;
+cursor:pointer;
+}
 footer{text-align:center;padding:35px 0;color:#858da5;font-size:12px}
-@media(max-width:380px){.container{width:calc(100% - 24px)}}
+@media(max-width:380px){
+.container{width:calc(100% - 24px)}
+.chat-form button{padding:0 12px}
+}
 </style>
 </head>
 
@@ -53,7 +141,7 @@ footer{text-align:center;padding:35px 0;color:#858da5;font-size:12px}
 
 <header>
 <div class="logo">ARRANCÁ<span>.</span></div>
-<div class="status">VERSIÓN 0.3</div>
+<div class="status">VERSIÓN 0.4</div>
 </header>
 
 <section class="hero">
@@ -118,6 +206,40 @@ footer{text-align:center;padding:35px 0;color:#858da5;font-size:12px}
 <section class="panel" id="savedPanel" style="display:none">
 <h2>Mis objetivos guardados</h2>
 <div id="saved"></div>
+</section>
+
+<!-- NUEVO CHAT -->
+<section class="chat-box">
+<h2>💬 Hablá con ARRANCÁ</h2>
+<p class="chat-intro">
+¿No sabés por dónde empezar? ¿Tenés dudas o necesitás ordenar tus ideas?
+Escribime y vamos a buscar juntos un próximo paso.
+</p>
+
+<div class="quick-prompts">
+<button type="button" data-prompt="No sé por dónde empezar">No sé por dónde empezar</button>
+<button type="button" data-prompt="Necesito motivación">Necesito motivación</button>
+<button type="button" data-prompt="Quiero organizar mi tiempo">Organizar mi tiempo</button>
+</div>
+
+<div class="chat-messages" id="chatMessages" aria-live="polite">
+<div class="chat-message bot-message">
+¡Hola! 👋 Soy ARRANCÁ.
+
+Estoy acá para ayudarte a ordenar tus ideas, pensar soluciones y encontrar un primer paso.
+
+Contame, ¿qué tenés en mente?
+</div>
+</div>
+
+<form class="chat-form" id="chatForm">
+<input id="chatInput" type="text" placeholder="Escribí tu mensaje..." autocomplete="off" maxlength="500" required>
+<button type="submit">ENVIAR</button>
+</form>
+
+<p class="chat-hint">
+Este chat es una primera versión de prueba con respuestas preparadas. Todavía no utiliza inteligencia artificial real.
+</p>
 </section>
 
 <footer>ARRANCÁ. — Las ideas no cambian nada. Lo que hacés con ellas, sí.</footer>
@@ -338,7 +460,98 @@ container.appendChild(div);
 });
 }
 
+/* FUNCIONES DEL CHAT */
+
+function addChatMessage(message,type){
+const messages=document.getElementById("chatMessages");
+const div=document.createElement("div");
+
+div.className="chat-message "+
+(type==="user"?"user-message":"bot-message");
+
+div.textContent=message;
+messages.appendChild(div);
+messages.scrollTop=messages.scrollHeight;
+}
+
+function getChatReply(message){
+const text=message.toLowerCase();
+
+if(text.includes("hola")||text.includes("buenas")){
+return "¡Hola! 😊 Qué bueno tenerte acá. Contame qué te gustaría conseguir y vamos a pensar juntos cómo empezar.";
+}
+
+if(text.includes("gracias")){
+return "¡De nada! ❤️ Recordá que no necesitás tener todo resuelto. Un pequeño paso ya es un comienzo.";
+}
+
+if(text.includes("no sé")||text.includes("no se")||text.includes("perdido")||text.includes("confundido")){
+return "Está bien no tener todas las respuestas. No tenés que resolver tu vida entera hoy.\n\nProbemos algo: escribí tres cosas que te gustaría cambiar o conseguir. Después elegimos una y pensamos un primer paso sencillo.";
+}
+
+if(text.includes("motivación")||text.includes("motivacion")||text.includes("desanim")||text.includes("abandonar")){
+return "A veces cuesta seguir, y eso no significa que estés fracasando.\n\nNo te compares con los demás. Mirá lo que podés hacer hoy, aunque sea durante diez minutos. La constancia se construye de a poco. 💜";
+}
+
+if(text.includes("tiempo")||text.includes("organizar")||text.includes("rutina")){
+return "Para organizar tu tiempo, probá esto:\n\n1. Elegí una sola prioridad.\n2. Reservá 10 o 20 minutos.\n3. Alejá las distracciones.\n4. Hacé una tarea pequeña.\n5. Al terminar, anotá tu avance.\n\nNo necesitás tener un día perfecto para progresar.";
+}
+
+if(text.includes("negocio")||text.includes("emprend")||text.includes("empresa")||text.includes("idea")){
+return "¡Podemos trabajar esa idea! 💡\n\nPrimero necesitamos entender tres cosas:\n\n1. ¿Qué querés crear?\n2. ¿A quién podría ayudar?\n3. ¿Qué versión pequeña podrías probar sin gastar dinero?\n\nEmpezar sencillo es mejor que quedarse esperando el momento perfecto.";
+}
+
+if(text.includes("estudi")||text.includes("aprender")||text.includes("curso")){
+return "¡Aprender algo nuevo es un gran comienzo! 📚\n\nTe recomiendo elegir un tema concreto, buscar un recurso gratuito y practicar un poquito todos los días.\n\n¿Qué es exactamente lo que querés aprender?";
+}
+
+if(text.includes("trabajo")||text.includes("empleo")||text.includes("currículum")||text.includes("curriculum")){
+return "Vamos a ordenar tu búsqueda de trabajo.\n\nPodés comenzar anotando tus habilidades, preparando un currículum sencillo y buscando oportunidades adecuadas para tu experiencia.\n\n¿Qué tipo de trabajo te gustaría conseguir?";
+}
+
+if(text.includes("objetivo")||text.includes("meta")||text.includes("conseguir")){
+return "Para avanzar hacia un objetivo, lo mejor es dividirlo en pasos pequeños.\n\nContame qué querés conseguir y qué es lo que más te está costando. Vamos a buscar una acción concreta para empezar.";
+}
+
+if(currentGoal){
+return "Quiero ayudarte a avanzar con tu objetivo: \""+currentGoal+"\".\n\nPodemos pensar juntos el siguiente paso. ¿Qué es lo que más te cuesta en este momento?";
+}
+
+return "Te leo. 😊 Contame un poquito más sobre lo que te pasa o lo que querés conseguir. No hace falta que lo expliques perfectamente: vamos a ordenar tus ideas juntos.";
+}
+
+document.getElementById("chatForm").addEventListener("submit",function(event){
+event.preventDefault();
+
+const input=document.getElementById("chatInput");
+const message=input.value.trim();
+
+if(!message)return;
+
+addChatMessage(message,"user");
+input.value="";
+
+const reply=getChatReply(message);
+
+setTimeout(()=>{
+addChatMessage(reply,"bot");
+},300);
+});
+
+document.querySelectorAll("[data-prompt]").forEach(button=>{
+button.addEventListener("click",()=>{
+const message=button.dataset.prompt;
+
+addChatMessage(message,"user");
+
+setTimeout(()=>{
+addChatMessage(getChatReply(message),"bot");
+},300);
+});
+});
+
 showSaved();
 </script>
 </body>
-</html>
+  </html>
+  
