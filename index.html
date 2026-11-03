@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090d19">
 <title>ARRANCÁ — Convertí tus ideas en acción</title>
-
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#090d19;color:#f4f5ff;font-family:Arial,sans-serif}
@@ -20,7 +19,7 @@ header{padding:24px 0;display:flex;justify-content:space-between;align-items:cen
 h1{font-size:clamp(38px,10vw,57px);margin:17px 0}
 h1 span{color:#9b89ff}
 .subtitle{color:#a6aec3;line-height:1.7;font-size:14px}
-.panel{background:#121a2b;border:1px solid #29364e;border-radius:20px;padding:21px;margin:20px 0}
+.panel,.chat-box{background:#121a2b;border:1px solid #29364e;border-radius:20px;padding:21px;margin:20px 0}
 h2{font-size:19px;margin:0 0 16px}
 .categories{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .category{background:#1a253b;color:white;border:1px solid #33415d;border-radius:12px;padding:15px;text-align:left;font-size:14px;cursor:pointer}
@@ -43,105 +42,28 @@ textarea:focus,select:focus{border-color:#a18aff}
 .progress-fill{height:100%;width:0;background:#9b89ff;transition:.3s}
 .note{font-size:12px;color:#969fb6;line-height:1.6}
 .saved-item{padding:13px;background:#1a253b;border-radius:10px;margin:9px 0;font-size:13px;line-height:1.6}
-
-/* CHAT ARRANCA 0.4 */
-.chat-box{
-background:#121a2b;
-border:1px solid #29364e;
-border-radius:20px;
-padding:20px;
-margin:20px 0;
-}
-.chat-intro{
-color:#a6aec3;
-font-size:13px;
-line-height:1.6;
-margin-top:-5px;
-}
-.chat-messages{
-height:300px;
-overflow-y:auto;
-background:#0c1322;
-border-radius:12px;
-padding:12px;
-margin:16px 0;
-}
-.chat-message{
-padding:11px 13px;
-border-radius:12px;
-margin:8px 0;
-max-width:90%;
-font-size:14px;
-line-height:1.6;
-white-space:pre-wrap;
-overflow-wrap:anywhere;
-}
-.bot-message{
-background:#202c43;
-margin-right:auto;
-}
-.user-message{
-background:#40366f;
-margin-left:auto;
-}
-.chat-form{
-display:flex;
-gap:8px;
-}
-.chat-form input{
-min-width:0;
-flex:1;
-background:#0c1322;
-color:white;
-border:1px solid #394660;
-border-radius:12px;
-padding:13px;
-font-size:14px;
-}
-.chat-form button{
-background:#8875f5;
-color:white;
-border:0;
-border-radius:12px;
-padding:0 17px;
-font-weight:bold;
-cursor:pointer;
-}
-.chat-hint{
-font-size:11px;
-color:#858da5;
-line-height:1.5;
-margin-top:12px;
-}
-.quick-prompts{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin:12px 0;
-}
-.quick-prompts button{
-background:#202c43;
-color:#c9c0ff;
-border:1px solid #394660;
-border-radius:20px;
-padding:9px 12px;
-font-size:12px;
-cursor:pointer;
-}
+.chat-intro{color:#a6aec3;font-size:13px;line-height:1.6;margin-top:-5px}
+.chat-messages{height:300px;overflow-y:auto;background:#0c1322;border-radius:12px;padding:12px;margin:16px 0}
+.chat-message{padding:11px 13px;border-radius:12px;margin:8px 0;max-width:90%;font-size:14px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+.bot-message{background:#202c43;margin-right:auto}
+.user-message{background:#40366f;margin-left:auto}
+.chat-form{display:flex;gap:8px}
+.chat-form input{min-width:0;flex:1;background:#0c1322;color:white;border:1px solid #394660;border-radius:12px;padding:13px;font-size:14px}
+.chat-form button{background:#8875f5;color:white;border:0;border-radius:12px;padding:0 17px;font-weight:bold;cursor:pointer}
+.chat-form button:disabled{opacity:.6}
+.chat-hint{font-size:11px;color:#858da5;line-height:1.5;margin-top:12px}
+.quick-prompts{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.quick-prompts button{background:#202c43;color:#c9c0ff;border:1px solid #394660;border-radius:20px;padding:9px 12px;font-size:12px;cursor:pointer}
 footer{text-align:center;padding:35px 0;color:#858da5;font-size:12px}
-@media(max-width:380px){
-.container{width:calc(100% - 24px)}
-.chat-form button{padding:0 12px}
-}
+@media(max-width:380px){.container{width:calc(100% - 24px)}.chat-form button{padding:0 12px}}
 </style>
 </head>
-
 <body>
 <div class="container">
 
 <header>
 <div class="logo">ARRANCÁ<span>.</span></div>
-<div class="status">VERSIÓN 0.4</div>
+<div class="status">VERSIÓN 0.5</div>
 </header>
 
 <section class="hero">
@@ -152,7 +74,6 @@ footer{text-align:center;padding:35px 0;color:#858da5;font-size:12px}
 
 <section class="panel">
 <h2>¿Qué querés conseguir?</h2>
-
 <div class="categories">
 <button class="category" data-type="idea">💡 Tengo una idea<small>Quiero hacerla realidad</small></button>
 <button class="category" data-type="learn">📚 Quiero aprender<small>Desarrollar una habilidad</small></button>
@@ -188,7 +109,6 @@ footer{text-align:center;padding:35px 0;color:#858da5;font-size:12px}
 </select>
 <small>No importa si tenés poco tiempo. Lo importante es empezar.</small>
 </div>
-
 <button class="primary" id="create">CREAR MI CAMINO →</button>
 </section>
 
@@ -208,42 +128,32 @@ footer{text-align:center;padding:35px 0;color:#858da5;font-size:12px}
 <div id="saved"></div>
 </section>
 
-<!-- NUEVO CHAT -->
 <section class="chat-box">
 <h2>💬 Hablá con ARRANCÁ</h2>
 <p class="chat-intro">
 ¿No sabés por dónde empezar? ¿Tenés dudas o necesitás ordenar tus ideas?
 Escribime y vamos a buscar juntos un próximo paso.
 </p>
-
 <div class="quick-prompts">
 <button type="button" data-prompt="No sé por dónde empezar">No sé por dónde empezar</button>
 <button type="button" data-prompt="Necesito motivación">Necesito motivación</button>
 <button type="button" data-prompt="Quiero organizar mi tiempo">Organizar mi tiempo</button>
 </div>
-
 <div class="chat-messages" id="chatMessages" aria-live="polite">
-<div class="chat-message bot-message">
-¡Hola! 👋 Soy ARRANCÁ.
+<div class="chat-message bot-message">¡Hola! 👋 Soy ARRANCÁ.
 
 Estoy acá para ayudarte a ordenar tus ideas, pensar soluciones y encontrar un primer paso.
 
-Contame, ¿qué tenés en mente?
+Contame, ¿qué tenés en mente?</div>
 </div>
-</div>
-
 <form class="chat-form" id="chatForm">
 <input id="chatInput" type="text" placeholder="Escribí tu mensaje..." autocomplete="off" maxlength="500" required>
 <button type="submit">ENVIAR</button>
 </form>
-
-<p class="chat-hint">
-Este chat es una primera versión de prueba con respuestas preparadas. Todavía no utiliza inteligencia artificial real.
-</p>
+<p class="chat-hint">Este chat utiliza inteligencia artificial para ayudarte a pensar y avanzar.</p>
 </section>
 
 <footer>ARRANCÁ. — Las ideas no cambian nada. Lo que hacés con ellas, sí.</footer>
-
 </div>
 
 <script>
@@ -262,8 +172,7 @@ steps:[
 "Pensá quién podría necesitar tu solución.",
 "Hablá con tres personas que podrían usarla.",
 "Creá una primera versión sencilla y probala."
-]
-},
+]},
 learn:{
 words:["aprender","estudiar","idioma","inglés","programar","programación","diseño","curso"],
 steps:[
@@ -272,8 +181,7 @@ steps:[
 "Organizá un momento diario para practicar.",
 "Realizá tu primer ejercicio práctico.",
 "Mostrá lo que aprendiste y buscá mejorar."
-]
-},
+]},
 work:{
 words:["trabajo","empleo","currículum","curriculum","dinero","ingresos"],
 steps:[
@@ -282,8 +190,7 @@ steps:[
 "Prepará un currículum sencillo.",
 "Buscá oportunidades gratuitas en tu zona.",
 "Enviá tus primeras postulaciones."
-]
-},
+]},
 life:{
 words:["vida","organizar","rutina","hábitos","habitos","salud","tiempo"],
 steps:[
@@ -292,8 +199,7 @@ steps:[
 "Organizá un momento para comenzar.",
 "Practicá ese cambio durante varios días.",
 "Revisá tus avances y ajustá tu rutina."
-]
-}
+]}
 };
 
 const generic={
@@ -337,24 +243,18 @@ selected=button.dataset.type;
 
 function detectPlan(text){
 const lower=text.toLowerCase();
-
 for(const key of Object.keys(plans)){
 if(plans[key].words.some(word=>lower.includes(word))){
 return plans[key].steps;
-}
-}
+}}
 return generic[selected]||generic.goal;
 }
 
 function updateProgress(){
 const checks=document.querySelectorAll("#steps input");
 const done=[...checks].filter(c=>c.checked).length;
-
-document.getElementById("progressText").textContent=
-done+" de "+checks.length+" tareas completadas";
-
-document.getElementById("progress").style.width=
-(done/checks.length*100)+"%";
+document.getElementById("progressText").textContent=done+" de "+checks.length+" tareas completadas";
+document.getElementById("progress").style.width=(done/checks.length*100)+"%";
 }
 
 document.getElementById("create").addEventListener("click",()=>{
@@ -362,24 +262,15 @@ const text=document.getElementById("goal").value.trim();
 const deadline=document.getElementById("deadline").value;
 const dailyTime=document.getElementById("dailyTime").value;
 
-if(!selected){
-alert("Primero elegí una categoría.");
-return;
-}
-
-if(text.length<5){
-alert("Contanos un poquito más sobre tu objetivo.");
-return;
-}
+if(!selected){alert("Primero elegí una categoría.");return;}
+if(text.length<5){alert("Contanos un poquito más sobre tu objetivo.");return;}
 
 currentGoal=text;
 currentPlan=detectPlan(text);
 currentDeadline=deadline;
 currentDailyTime=dailyTime;
 
-document.getElementById("summary").textContent=
-"Tu objetivo: "+text;
-
+document.getElementById("summary").textContent="Tu objetivo: "+text;
 document.getElementById("personalSummary").textContent=
 "⏳ Tiempo que te proponés: "+deadline+
 " | 📅 Tiempo disponible por día: "+dailyTime+
@@ -387,35 +278,27 @@ document.getElementById("personalSummary").textContent=
 
 const list=document.getElementById("steps");
 list.innerHTML="";
-
 currentPlan.forEach((step,i)=>{
 const div=document.createElement("div");
 div.className="step";
-
 const label=document.createElement("label");
 const check=document.createElement("input");
-
 check.type="checkbox";
 check.addEventListener("change",updateProgress);
-
 label.appendChild(check);
 label.appendChild(document.createTextNode("Paso "+(i+1)+": "+step));
-
 div.appendChild(label);
 list.appendChild(div);
 });
 
 updateProgress();
-
 document.getElementById("result").style.display="block";
 document.getElementById("result").scrollIntoView({behavior:"smooth"});
 });
 
 document.getElementById("save").addEventListener("click",()=>{
 if(!currentGoal)return;
-
 const saved=JSON.parse(localStorage.getItem("arrancaGoals")||"[]");
-
 saved.push({
 goal:currentGoal,
 steps:currentPlan,
@@ -423,9 +306,7 @@ deadline:currentDeadline,
 dailyTime:currentDailyTime,
 date:new Date().toLocaleDateString("es-AR")
 });
-
 localStorage.setItem("arrancaGoals",JSON.stringify(saved));
-
 showSaved();
 alert("¡Objetivo guardado en este dispositivo!");
 });
@@ -434,25 +315,18 @@ function showSaved(){
 const saved=JSON.parse(localStorage.getItem("arrancaGoals")||"[]");
 const panel=document.getElementById("savedPanel");
 const container=document.getElementById("saved");
-
 panel.style.display=saved.length?"block":"none";
 container.innerHTML="";
-
 saved.forEach(item=>{
 const div=document.createElement("div");
 div.className="saved-item";
-
 const title=document.createElement("strong");
 title.textContent=item.goal;
-
 const date=document.createElement("p");
 date.textContent="Guardado el "+item.date;
-
 const details=document.createElement("p");
-details.textContent=
-"Plazo: "+(item.deadline||"No indicado")+
+details.textContent="Plazo: "+(item.deadline||"No indicado")+
 " | Tiempo diario: "+(item.dailyTime||"No indicado");
-
 div.appendChild(title);
 div.appendChild(date);
 div.appendChild(details);
@@ -460,98 +334,73 @@ container.appendChild(div);
 });
 }
 
-/* FUNCIONES DEL CHAT */
+/* CHAT CON INTELIGENCIA ARTIFICIAL */
+
+const AI_API="https://arranca-api.sg2879458.workers.dev";
+let chatHistory=[];
 
 function addChatMessage(message,type){
 const messages=document.getElementById("chatMessages");
 const div=document.createElement("div");
-
-div.className="chat-message "+
-(type==="user"?"user-message":"bot-message");
-
+div.className="chat-message "+(type==="user"?"user-message":"bot-message");
 div.textContent=message;
 messages.appendChild(div);
 messages.scrollTop=messages.scrollHeight;
 }
 
-function getChatReply(message){
-const text=message.toLowerCase();
+async function sendToAI(message){
+if(!message.trim())return;
 
-if(text.includes("hola")||text.includes("buenas")){
-return "¡Hola! 😊 Qué bueno tenerte acá. Contame qué te gustaría conseguir y vamos a pensar juntos cómo empezar.";
+addChatMessage(message,"user");
+chatHistory.push({role:"user",content:message});
+
+const input=document.getElementById("chatInput");
+const button=document.querySelector(".chat-form button");
+input.disabled=true;
+button.disabled=true;
+button.textContent="...";
+
+try{
+const response=await fetch(AI_API,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({messages:chatHistory})
+});
+
+const data=await response.json();
+if(!response.ok)throw new Error(data.error||"Error de conexión");
+if(!data.response)throw new Error("Respuesta vacía");
+
+chatHistory.push({role:"assistant",content:data.response});
+addChatMessage(data.response,"bot");
+
+}catch(error){
+chatHistory.pop();
+addChatMessage("No pude conectarme con mi inteligencia artificial. Intentá nuevamente en unos momentos.","bot");
+}finally{
+input.disabled=false;
+button.disabled=false;
+button.textContent="ENVIAR";
+input.focus();
 }
-
-if(text.includes("gracias")){
-return "¡De nada! ❤️ Recordá que no necesitás tener todo resuelto. Un pequeño paso ya es un comienzo.";
-}
-
-if(text.includes("no sé")||text.includes("no se")||text.includes("perdido")||text.includes("confundido")){
-return "Está bien no tener todas las respuestas. No tenés que resolver tu vida entera hoy.\n\nProbemos algo: escribí tres cosas que te gustaría cambiar o conseguir. Después elegimos una y pensamos un primer paso sencillo.";
-}
-
-if(text.includes("motivación")||text.includes("motivacion")||text.includes("desanim")||text.includes("abandonar")){
-return "A veces cuesta seguir, y eso no significa que estés fracasando.\n\nNo te compares con los demás. Mirá lo que podés hacer hoy, aunque sea durante diez minutos. La constancia se construye de a poco. 💜";
-}
-
-if(text.includes("tiempo")||text.includes("organizar")||text.includes("rutina")){
-return "Para organizar tu tiempo, probá esto:\n\n1. Elegí una sola prioridad.\n2. Reservá 10 o 20 minutos.\n3. Alejá las distracciones.\n4. Hacé una tarea pequeña.\n5. Al terminar, anotá tu avance.\n\nNo necesitás tener un día perfecto para progresar.";
-}
-
-if(text.includes("negocio")||text.includes("emprend")||text.includes("empresa")||text.includes("idea")){
-return "¡Podemos trabajar esa idea! 💡\n\nPrimero necesitamos entender tres cosas:\n\n1. ¿Qué querés crear?\n2. ¿A quién podría ayudar?\n3. ¿Qué versión pequeña podrías probar sin gastar dinero?\n\nEmpezar sencillo es mejor que quedarse esperando el momento perfecto.";
-}
-
-if(text.includes("estudi")||text.includes("aprender")||text.includes("curso")){
-return "¡Aprender algo nuevo es un gran comienzo! 📚\n\nTe recomiendo elegir un tema concreto, buscar un recurso gratuito y practicar un poquito todos los días.\n\n¿Qué es exactamente lo que querés aprender?";
-}
-
-if(text.includes("trabajo")||text.includes("empleo")||text.includes("currículum")||text.includes("curriculum")){
-return "Vamos a ordenar tu búsqueda de trabajo.\n\nPodés comenzar anotando tus habilidades, preparando un currículum sencillo y buscando oportunidades adecuadas para tu experiencia.\n\n¿Qué tipo de trabajo te gustaría conseguir?";
-}
-
-if(text.includes("objetivo")||text.includes("meta")||text.includes("conseguir")){
-return "Para avanzar hacia un objetivo, lo mejor es dividirlo en pasos pequeños.\n\nContame qué querés conseguir y qué es lo que más te está costando. Vamos a buscar una acción concreta para empezar.";
-}
-
-if(currentGoal){
-return "Quiero ayudarte a avanzar con tu objetivo: \""+currentGoal+"\".\n\nPodemos pensar juntos el siguiente paso. ¿Qué es lo que más te cuesta en este momento?";
-}
-
-return "Te leo. 😊 Contame un poquito más sobre lo que te pasa o lo que querés conseguir. No hace falta que lo expliques perfectamente: vamos a ordenar tus ideas juntos.";
 }
 
 document.getElementById("chatForm").addEventListener("submit",function(event){
 event.preventDefault();
-
 const input=document.getElementById("chatInput");
 const message=input.value.trim();
-
 if(!message)return;
-
-addChatMessage(message,"user");
 input.value="";
-
-const reply=getChatReply(message);
-
-setTimeout(()=>{
-addChatMessage(reply,"bot");
-},300);
+sendToAI(message);
 });
 
 document.querySelectorAll("[data-prompt]").forEach(button=>{
 button.addEventListener("click",()=>{
-const message=button.dataset.prompt;
-
-addChatMessage(message,"user");
-
-setTimeout(()=>{
-addChatMessage(getChatReply(message),"bot");
-},300);
+sendToAI(button.dataset.prompt);
 });
 });
 
 showSaved();
 </script>
 </body>
-  </html>
-  
+</html>
