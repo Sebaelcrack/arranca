@@ -3,210 +3,198 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090d19">
-<title>ARRANCÁ — Tu próximo paso empieza acá</title>
+<title>ARRANCÁ — Convertí tus ideas en acción</title>
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;background:#090d19;color:#f5f6ff;
- font-family:Arial,sans-serif;min-height:100vh;
-}
-.container{width:min(100% - 36px,650px);margin:auto}
-header{padding:25px 0;display:flex;justify-content:space-between;align-items:center}
+body{margin:0;background:#090d19;color:#f4f5ff;font-family:Arial,sans-serif}
+.container{width:min(100% - 32px,650px);margin:auto}
+header{padding:24px 0;display:flex;justify-content:space-between;align-items:center}
 .logo{font-size:25px;font-weight:900;letter-spacing:2px}
-.logo span{color:#8b7cff}
-.status{font-size:11px;color:#a6a9bc}
-.hero{text-align:center;padding:55px 0 35px}
-.tag{color:#a99cff;font-size:12px;letter-spacing:2px}
-h1{font-size:clamp(38px,10vw,58px);margin:18px 0}
-h1 span{color:#9c8aff}
-.subtitle{color:#a6abc0;line-height:1.7;font-size:15px}
-.panel{
- background:#12192a;border:1px solid #28334a;
- border-radius:20px;padding:23px;margin:22px 0;
-}
-h2{font-size:19px;margin:0 0 17px}
+.logo span{color:#9885ff}
+.status{font-size:10px;color:#9b91db}
+.hero{text-align:center;padding:48px 0 30px}
+.tag{font-size:11px;color:#a99aff;letter-spacing:2px}
+h1{font-size:clamp(38px,10vw,57px);margin:17px 0}
+h1 span{color:#9b89ff}
+.subtitle{color:#a6aec3;line-height:1.7;font-size:14px}
+.panel{background:#121a2b;border:1px solid #29364e;border-radius:20px;padding:21px;margin:20px 0}
+h2{font-size:19px;margin:0 0 16px}
 .categories{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.category{
- background:#192238;color:white;border:1px solid #303b54;
- border-radius:12px;padding:15px;text-align:left;
- font-size:14px;cursor:pointer;
-}
-.category small{display:block;color:#a7aec2;margin-top:7px}
-.category.active{border-color:#a18bff;background:#282443}
-textarea{
- width:100%;min-height:115px;resize:vertical;
- background:#0c1322;color:white;border:1px solid #35415a;
- border-radius:12px;padding:15px;font-size:15px;
- font-family:inherit;outline:none;
-}
-textarea:focus{border-color:#a18bff}
-button.primary{
- width:100%;padding:16px;border:0;border-radius:12px;
- background:linear-gradient(100deg,#7867e9,#a18bff);
- color:white;font-size:15px;font-weight:bold;cursor:pointer;
- margin-top:14px;
-}
-button:active{transform:scale(.98)}
+.category{background:#1a253b;color:white;border:1px solid #33415d;border-radius:12px;padding:15px;text-align:left;font-size:14px;cursor:pointer}
+.category small{display:block;color:#a8b2c9;margin-top:7px}
+.category.active{border-color:#a18aff;background:#292548}
+textarea{width:100%;min-height:115px;resize:vertical;background:#0c1322;color:white;border:1px solid #394660;border-radius:12px;padding:15px;font-size:15px;font-family:inherit;outline:none}
+textarea:focus{border-color:#a18aff}
+.primary{width:100%;padding:16px;border:0;border-radius:12px;background:linear-gradient(100deg,#7867e9,#a18bff);color:white;font-size:15px;font-weight:bold;cursor:pointer;margin-top:14px}
 .result{display:none}
-.step{
- padding:14px 0;border-bottom:1px solid #29334a;
- line-height:1.5;font-size:14px
-}
-.step:last-child{border:0}
-.step input{accent-color:#9c8aff;margin-right:9px}
 .result h2{color:#b8aaff}
-.note{font-size:12px;color:#939bb1;line-height:1.6}
+.step{padding:15px 0;border-bottom:1px solid #29364e;line-height:1.5;font-size:14px}
+.step:last-child{border:0}
+.step input{accent-color:#9c8aff;margin-right:10px;width:17px;height:17px;vertical-align:middle}
+.progress-bg{height:8px;background:#29344a;border-radius:10px;overflow:hidden;margin:12px 0}
+.progress-fill{height:100%;width:0;background:#9b89ff;transition:.3s}
+.note{font-size:12px;color:#969fb6;line-height:1.6}
+.saved-item{padding:13px;background:#1a253b;border-radius:10px;margin:9px 0;font-size:13px}
 footer{text-align:center;padding:35px 0;color:#858da5;font-size:12px}
-.hidden{display:none}
 @media(max-width:380px){.container{width:calc(100% - 24px)}}
 </style>
 </head>
 <body>
 <div class="container">
-
 <header>
- <div class="logo">ARRANCÁ<span>.</span></div>
- <div class="status">● PROYECTO EN CONSTRUCCIÓN</div>
+<div class="logo">ARRANCÁ<span>.</span></div>
+<div class="status">VERSIÓN 0.2</div>
 </header>
 
 <section class="hero">
- <div class="tag">TU PRÓXIMO CAPÍTULO EMPIEZA HOY</div>
- <h1>Las ideas necesitan<br><span>acción.</span></h1>
- <p class="subtitle">
- No importa dónde estés ni cuánto sepas.<br>
- Contanos qué querés conseguir.<br>
- Nosotros te ayudamos a dar el primer paso.
- </p>
+<div class="tag">TU PRÓXIMO CAPÍTULO EMPIEZA HOY</div>
+<h1>Las ideas necesitan<br><span>acción.</span></h1>
+<p class="subtitle">Contanos qué querés conseguir.<br>Vamos a encontrar juntos tu primer paso.</p>
 </section>
 
 <section class="panel">
- <h2>¿Qué querés conseguir?</h2>
+<h2>¿Qué querés conseguir?</h2>
+<div class="categories">
+<button class="category" data-type="idea">💡 Tengo una idea<small>Quiero hacerla realidad</small></button>
+<button class="category" data-type="learn">📚 Quiero aprender<small>Desarrollar una habilidad</small></button>
+<button class="category" data-type="goal">🎯 Tengo un objetivo<small>Necesito organizarme</small></button>
+<button class="category" data-type="direction">🧭 No sé qué hacer<small>Quiero encontrar mi rumbo</small></button>
+</div>
 
- <div class="categories">
-  <button class="category" data-type="idea">
-   💡 Tengo una idea
-   <small>Quiero hacerla realidad</small>
-  </button>
-  <button class="category" data-type="learn">
-   📚 Quiero aprender
-   <small>Desarrollar una habilidad</small>
-  </button>
-  <button class="category" data-type="goal">
-   🎯 Tengo un objetivo
-   <small>Necesito organizarme</small>
-  </button>
-  <button class="category" data-type="direction">
-   🧭 No sé qué hacer
-   <small>Quiero encontrar mi rumbo</small>
-  </button>
- </div>
-
- <h2 style="margin-top:25px">Contanos un poco más</h2>
- <textarea id="goal" placeholder="Ejemplo: Quiero crear mi propio negocio, pero no tengo dinero ni experiencia..."></textarea>
-
- <button class="primary" id="create">CREAR MI CAMINO →</button>
+<h2 style="margin-top:24px">¿Qué tenés en mente?</h2>
+<textarea id="goal" placeholder="Ejemplo: Quiero crear un negocio desde cero, pero no tengo dinero ni experiencia..."></textarea>
+<button class="primary" id="create">CREAR MI CAMINO →</button>
 </section>
 
 <section class="panel result" id="result">
- <h2>Tu camino comienza acá ✨</h2>
- <p id="summary" class="subtitle"></p>
- <div id="steps"></div>
- <p class="note">
- Este es un primer plan orientativo creado por ARRANCÁ.
- No necesitás hacer todo hoy. Empezá por el primer paso.
- </p>
- <button class="primary" onclick="window.location.reload()">
- CREAR OTRO CAMINO
- </button>
+<h2>Tu camino comienza acá ✨</h2>
+<p class="subtitle" id="summary"></p>
+<strong id="progressText">0 de 5 tareas completadas</strong>
+<div class="progress-bg"><div class="progress-fill" id="progress"></div></div>
+<div id="steps"></div>
+<p class="note">No intentes resolver todo hoy. Un pequeño avance también es progreso.</p>
+<button class="primary" id="save">GUARDAR MI OBJETIVO</button>
 </section>
 
-<footer>
- ARRANCÁ. — Las ideas no cambian nada. Lo que hacés con ellas, sí.
- <br><br>Una idea que merece convertirse en realidad.
-</footer>
+<section class="panel" id="savedPanel" style="display:none">
+<h2>Mis objetivos guardados</h2>
+<div id="saved"></div>
+</section>
 
+<footer>ARRANCÁ. — Las ideas no cambian nada. Lo que hacés con ellas, sí.</footer>
 </div>
 
 <script>
-let selected = "";
+let selected="";
+let currentGoal="";
+let currentPlan=[];
+
+const plans={
+idea:{
+words:["negocio","empresa","emprender","aplicación","app","proyecto","producto","marca"],
+steps:["Escribí tu idea en una sola oración.","Identificá qué problema resuelve.","Pensá quién podría necesitar tu solución.","Hablá con tres personas que podrían usarla.","Creá una primera versión sencilla y probala."]
+},
+learn:{
+words:["aprender","estudiar","idioma","inglés","programar","programación","diseño","curso"],
+steps:["Definí exactamente qué querés aprender.","Buscá un recurso gratuito para principiantes.","Organizá 20 minutos diarios de práctica.","Realizá tu primer ejercicio práctico.","Mostrá lo que aprendiste y buscá mejorar."]
+},
+work:{
+words:["trabajo","empleo","currículum","curriculum","dinero","ingresos"],
+steps:["Identificá qué tipo de trabajo estás buscando.","Anotá tus habilidades y experiencias.","Prepará un currículum sencillo.","Buscá oportunidades gratuitas en tu zona.","Enviá tus primeras postulaciones."]
+},
+life:{
+words:["vida","organizar","rutina","hábitos","habitos","salud","tiempo"],
+steps:["Escribí qué aspecto de tu vida querés mejorar.","Elegí un cambio pequeño y alcanzable.","Organizá un momento para comenzar.","Practicá ese cambio durante varios días.","Revisá tus avances y ajustá tu rutina."]
+}
+};
+
+const generic={
+idea:["Describí qué querés crear.","Investigá cómo funciona algo parecido.","Identificá qué necesitás para comenzar.","Construí una primera versión sencilla.","Mostrá tu creación y pedí opiniones."],
+learn:["Definí qué querés aprender.","Encontrá material gratuito.","Estudiá un poco cada día.","Practicá con un ejercicio real.","Evaluá lo que aprendiste."],
+goal:["Escribí tu objetivo con claridad.","Dividilo en tareas pequeñas.","Elegí qué podés hacer hoy.","Reservá tiempo para avanzar.","Revisá tus resultados."],
+direction:["Anotá tres cosas que te interesaría probar.","Elegí una que puedas experimentar gratis.","Investigá cómo comenzar.","Probala durante un rato.","Decidí si querés continuar."]
+};
 
 document.querySelectorAll(".category").forEach(button=>{
- button.addEventListener("click",()=>{
-  document.querySelectorAll(".category").forEach(b=>b.classList.remove("active"));
-  button.classList.add("active");
-  selected=button.dataset.type;
- });
+button.addEventListener("click",()=>{
+document.querySelectorAll(".category").forEach(b=>b.classList.remove("active"));
+button.classList.add("active");
+selected=button.dataset.type;
 });
+});
+
+function detectPlan(text){
+const lower=text.toLowerCase();
+for(const key of Object.keys(plans)){
+if(plans[key].words.some(word=>lower.includes(word)))return plans[key].steps;
+}
+return generic[selected]||generic.goal;
+}
+
+function updateProgress(){
+const checks=document.querySelectorAll("#steps input");
+const done=[...checks].filter(c=>c.checked).length;
+document.getElementById("progressText").textContent=done+" de "+checks.length+" tareas completadas";
+document.getElementById("progress").style.width=(done/checks.length*100)+"%";
+}
 
 document.getElementById("create").addEventListener("click",()=>{
- const goal=document.getElementById("goal").value.trim();
+const text=document.getElementById("goal").value.trim();
+if(!selected){alert("Primero elegí una categoría.");return;}
+if(text.length<5){alert("Contanos un poquito más.");return;}
 
- if(!selected){
-  alert("Primero elegí qué querés conseguir.");
-  return;
- }
- if(goal.length<5){
-  alert("Contanos un poquito más sobre tu objetivo.");
-  return;
- }
+currentGoal=text;
+currentPlan=detectPlan(text);
+document.getElementById("summary").textContent="Tu objetivo: "+text;
 
- const plans={
-  idea:[
-   "Describí tu idea en una sola oración.",
-   "Identificá qué problema resuelve y a quién ayuda.",
-   "Buscá tres personas que podrían necesitarla.",
-   "Preguntales qué opinan y qué cambiarían.",
-   "Construí una versión sencilla para probarla."
-  ],
-  learn:[
-   "Definí qué habilidad querés aprender y para qué.",
-   "Buscá un recurso gratuito para principiantes.",
-   "Reservá 20 minutos diarios para practicar.",
-   "Hacé un pequeño ejercicio práctico.",
-   "Mostrá lo que aprendiste y buscá mejorar."
-  ],
-  goal:[
-   "Escribí exactamente qué querés conseguir.",
-   "Dividí el objetivo en pequeñas metas.",
-   "Elegí una tarea que puedas hacer hoy.",
-   "Establecé un momento para trabajar en ella.",
-   "Revisá tus avances y ajustá el plan."
-  ],
-  direction:[
-   "Escribí tres cosas que te gustaría experimentar.",
-   "Elegí una que puedas probar sin gastar dinero.",
-   "Investigá cómo empezar desde cero.",
-   "Probala durante 30 minutos.",
-   "Evaluá si te gustaría seguir explorándola."
-  ]
- };
-
- document.getElementById("summary").textContent=
- "Tu objetivo: "+goal;
-
- const list=document.getElementById("steps");
- list.innerHTML="";
-
- plans[selected].forEach((step,i)=>{
-  const item=document.createElement("div");
-  item.className="step";
-  const label=document.createElement("label");
-  const checkbox=document.createElement("input");
-  checkbox.type="checkbox";
-  const text=document.createTextNode("Paso "+(i+1)+": "+step);
-  label.appendChild(checkbox);
-  label.appendChild(text);
-  item.appendChild(label);
-  list.appendChild(item);
- });
-
- const result=document.getElementById("result");
- result.style.display="block";
- result.scrollIntoView({behavior:"smooth"});
+const list=document.getElementById("steps");
+list.innerHTML="";
+currentPlan.forEach((step,i)=>{
+const div=document.createElement("div");
+div.className="step";
+const label=document.createElement("label");
+const check=document.createElement("input");
+check.type="checkbox";
+check.addEventListener("change",updateProgress);
+label.appendChild(check);
+label.appendChild(document.createTextNode("Paso "+(i+1)+": "+step));
+div.appendChild(label);
+list.appendChild(div);
 });
+updateProgress();
+document.getElementById("result").style.display="block";
+document.getElementById("result").scrollIntoView({behavior:"smooth"});
+});
+
+document.getElementById("save").addEventListener("click",()=>{
+const saved=JSON.parse(localStorage.getItem("arrancaGoals")||"[]");
+saved.push({goal:currentGoal,steps:currentPlan,date:new Date().toLocaleDateString("es-AR")});
+localStorage.setItem("arrancaGoals",JSON.stringify(saved));
+showSaved();
+alert("¡Objetivo guardado en este dispositivo!");
+});
+
+function showSaved(){
+const saved=JSON.parse(localStorage.getItem("arrancaGoals")||"[]");
+const panel=document.getElementById("savedPanel");
+const container=document.getElementById("saved");
+panel.style.display=saved.length?"block":"none";
+container.innerHTML="";
+saved.forEach(item=>{
+const div=document.createElement("div");
+div.className="saved-item";
+const title=document.createElement("strong");
+title.textContent=item.goal;
+const date=document.createElement("p");
+date.textContent="Guardado el "+item.date;
+div.appendChild(title);
+div.appendChild(date);
+container.appendChild(div);
+});
+}
+showSaved();
 </script>
 </body>
-  </html>
-  
+</html>
